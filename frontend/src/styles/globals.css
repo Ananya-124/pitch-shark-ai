@@ -1,0 +1,243 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-orbitron: "Orbitron", monospace;
+  --font-rajdhani: "Rajdhani", sans-serif;
+  --font-jetbrains: "JetBrains Mono", monospace;
+
+  --neon-cyan: #00f5ff;
+  --neon-violet: #8b5cf6;
+  --neon-emerald: #10b981;
+  --neon-amber: #f59e0b;
+  --neon-rose: #f43f5e;
+  --bg-void: #020408;
+  --bg-deep: #060d1a;
+  --bg-panel: rgba(8, 18, 40, 0.85);
+  --bg-glass: rgba(0, 245, 255, 0.03);
+  --border-glow: rgba(0, 245, 255, 0.2);
+  --border-soft: rgba(139, 92, 246, 0.15);
+  --text-primary: #e2f0ff;
+  --text-secondary: #7aadcc;
+  --text-muted: #3a6080;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-family: var(--font-rajdhani);
+  background: var(--bg-void);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-soft);
+  border-radius: 2px;
+}
+
+/* ── Grid Background ──────────────────────────────────────────────────────── */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(
+      rgba(0, 245, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black,
+    transparent
+  );
+}
+
+/* ── Glassmorphism Panel ─────────────────────────────────────────────────── */
+.glass-panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+}
+
+/* ── Neon Glow Effects ───────────────────────────────────────────────────── */
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.15),
+    inset 0 0 20px rgba(0, 245, 255, 0.05);
+}
+.glow-violet {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.2),
+    inset 0 0 20px rgba(139, 92, 246, 0.05);
+}
+.glow-emerald {
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+}
+.glow-amber {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
+}
+
+/* ── Text Gradient ───────────────────────────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #00f5ff 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Clip Path Buttons ───────────────────────────────────────────────────── */
+.btn-clip {
+  clip-path: polygon(
+    12px 0%,
+    100% 0%,
+    calc(100% - 12px) 100%,
+    0% 100%
+  );
+}
+.btn-clip-sm {
+  clip-path: polygon(
+    8px 0%,
+    100% 0%,
+    calc(100% - 8px) 100%,
+    0% 100%
+  );
+}
+
+/* ── Metric Bar Animation ────────────────────────────────────────────────── */
+.metric-bar-fill {
+  animation: fill-bar 1.2s ease forwards;
+}
+
+@keyframes fill-bar {
+  from {
+    width: 0% !important;
+  }
+}
+
+/* ── Score Ring Animation ────────────────────────────────────────────────── */
+.ring-animate {
+  animation: ring-draw 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes ring-draw {
+  from {
+    stroke-dashoffset: 427.08 !important;
+  }
+}
+
+/* ── Chat Typing Dots ────────────────────────────────────────────────────── */
+.typing-dot {
+  animation: bounce-dot 1.2s infinite;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce-dot {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.6);
+    opacity: 0.4;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ── Stagger Animations ──────────────────────────────────────────────────── */
+.stagger-child {
+  animation: fade-slide-up 0.4s ease backwards;
+}
+.stagger-child:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.stagger-child:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.stagger-child:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.stagger-child:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.stagger-child:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.stagger-child:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Input Focus ─────────────────────────────────────────────────────────── */
+.pitch-input {
+  background: rgba(0, 245, 255, 0.03);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: var(--text-primary);
+  font-family: var(--font-rajdhani);
+  font-size: 15px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.pitch-input::placeholder {
+  color: var(--text-muted);
+}
+
+.pitch-input:focus {
+  border-color: rgba(0, 245, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.08);
+}
+
+/* ── Offer Card Top Badge ────────────────────────────────────────────────── */
+.offer-top-badge::before {
+  content: "TOP OFFER";
+  position: absolute;
+  top: 14px;
+  right: -28px;
+  background: #f59e0b;
+  color: #000;
+  font-size: 9px;
+  font-family: var(--font-orbitron);
+  letter-spacing: 2px;
+  padding: 4px 44px;
+  transform: rotate(45deg);
+  font-weight: 700;
+  white-space: nowrap;
+}
