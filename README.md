@@ -1,4 +1,4 @@
-# 🚀 PitchShark AI — AI Shark Tank for Startups
+# 🚀 PitchPilot AI — AI Shark Tank for Startups
 
 > *Where startup ideas meet AI-powered investor analysis.*
 
@@ -17,13 +17,13 @@ They often ask:
 - Is there market demand?
 - Would investors even care?
 
-PitchShark AI helps founders get **instant AI-driven startup feedback** before they build.
+PitchPilot AI helps founders get **instant AI-driven startup feedback** before they build.
 
 ---
 
 # 💡 Solution
 
-PitchShark AI acts like an AI investor panel.
+PitchPilot AI acts like an AI investor panel.
 
 Users submit:
 - Startup Name
@@ -71,7 +71,6 @@ The AI then:
 ## Backend
 - FastAPI
 - Python
-- REST APIs
 
 ## Deployment
 - Vercel (Frontend)
@@ -108,7 +107,7 @@ backend/
 
 ```bash
 git clone <your-repo-url>
-cd pitchShark-ai
+cd PitchPilot-ai
 ```
 
 ---
@@ -191,19 +190,9 @@ Deployed using:
 
 ---
 
-
-# 🎯 Hackathon Track Relevance
-
-This project fits the:
-- AI/ML Track
-- Software Innovation Track
-- Startup & Productivity Tools Category
-
----
-
 # 🔥 Why This Project Matters
 
-PitchShark AI helps:
+PitchPilot AI helps:
 - Student founders
 - Early-stage startups
 - Hackathon teams
@@ -234,6 +223,6 @@ Instead of spending weeks building an idea blindly, users can quickly understand
 
 #  Final Thought
 
-> “Ideas are cheap. Execution is everything.”
+> “From Idea to Investment- Powered by AI”
 
-PitchShark AI focuses on helping builders validate and improve ideas before turning them into products.
+PitchPilot AI focuses on helping builders validate and improve ideas before turning them into products.
