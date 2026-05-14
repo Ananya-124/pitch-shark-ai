@@ -38,18 +38,48 @@ export default function NegotiationChat({ shark, feedback }: NegotiationChatProp
   const currentOffer = currentOffers[shark.id] || null;
 
   // Initialize chat with opener
+  // useEffect(() => {
+  //   if (!chatHistory[shark.id]) {
+  //     const opener: ChatMessage = {
+  //       role: "shark",
+  //       text: currentOffer
+  //         ? `I've reviewed ${pitch?.name} in depth. My current offer stands at ₹${currentOffer.amount} Lakhs for ${currentOffer.equity}% equity. ${feedback.comment.split(".")[0]}. What would you like to negotiate?`
+  //         : `I passed on ${pitch?.name} because ${feedback.concerns[0]?.toLowerCase() || "the risks outweigh the opportunity"}. However, I'm open to hearing a revised case. Convince me.`:`The AI implementation is promising, but investor confidence depends on execution. Tell me about your architecture, performance, and long-term roadmap.`,
+  //       timestamp: new Date().toISOString(),
+  //     };
+  //     setChatHistory(shark.id, [opener]);
+  //   }
+  // }, [shark.id]); // eslint-disable-line
   useEffect(() => {
-    if (!chatHistory[shark.id]) {
-      const opener: ChatMessage = {
-        role: "shark",
-        text: currentOffer
-          ? `I've reviewed ${pitch?.name} in depth. My current offer stands at ₹${currentOffer.amount} Lakhs for ${currentOffer.equity}% equity. ${feedback.comment.split(".")[0]}. What would you like to negotiate?`
-          : `I passed on ${pitch?.name} because ${feedback.concerns[0]?.toLowerCase() || "the risks outweigh the opportunity"}. However, I'm open to hearing a revised case. Convince me.`,
-        timestamp: new Date().toISOString(),
-      };
-      setChatHistory(shark.id, [opener]);
-    }
-  }, [shark.id]); // eslint-disable-line
+  if (!chatHistory[shark.id]) {
+    const techResponses = [
+      `I've reviewed ${pitch?.name} in depth. The technology has potential, but scalability is still a concern. My current offer stands at ₹${currentOffer?.amount} Lakhs for ${currentOffer?.equity}% equity. Why should I believe this can scale to thousands of users?`,
+
+      `Your product solves an interesting problem, but I want to understand the technical moat here. What's stopping a larger competitor from building this in 3 months?`,
+
+      `The AI implementation is promising, but investor confidence depends on execution. Tell me about your architecture, performance, and long-term roadmap.`,
+
+      `I like the vision behind ${pitch?.name}, but tech products fail when user retention is weak. How are you planning to keep users engaged after the initial launch?`,
+
+      `You've built something functional, which already puts you ahead of many startups. But before I increase my offer, convince me your team can execute consistently under pressure.`,
+
+      `The market opportunity is interesting. However, I still see risks in monetization and scaling costs. Explain how this becomes profitable long term.`,
+
+      `I passed initially because ${feedback.concerns[0]?.toLowerCase() || "the risks outweigh the opportunity"}, but I'm still curious. If you were asking for funding today, what would be your strongest argument?`,
+    ];
+
+    const randomResponse =
+      techResponses[Math.floor(Math.random() * techResponses.length)];
+
+    const opener: ChatMessage = {
+      role: "shark",
+      text: randomResponse,
+      timestamp: new Date().toISOString(),
+    };
+
+    setChatHistory(shark.id, [opener]);
+  }
+}, [shark.id]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
